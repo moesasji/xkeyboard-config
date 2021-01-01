@@ -154,6 +154,127 @@ xkb_symbols "dvorakukp" {
     key <AC11> {        [apostrophe,    at,         dead_circumflex, dead_caron] };
 };
 
+// Balance13 layout optimized for iso layout
+partial alphanumeric_keys modifier_keys
+xkb_symbols "balance13" {
+
+    name[Group1]= "English (UK, Balance13)";
+
+    // Alphanumeric-keys
+    // ===============
+
+    // Number row (warning - fails if no keys defined)
+    // --------------------------------------------------------
+    key <TLDE> { [ sterling,      EuroSign                 ] };
+    key <AE01> { [ dollar,        grave                    ] };
+    key <AE02> { [ 9,             at                       ] };
+    key <AE03> { [ 7,             braceleft                ] };
+    key <AE04> { [ 1,             braceright               ] };
+    key <AE05> { [ 3,             parenleft                ] };
+    key <AE06> { [ 5,             bar                      ] };
+    key <AE07> { [ ampersand,     asciitilde               ] };
+    key <AE08> { [ 4,             asterisk                 ] };
+    key <AE09> { [ 2,             parenright               ] };
+    key <AE10> { [ 0,             plus                     ] };
+    key <AE11> { [ 6,             exclam                   ] };
+    key <AE12> { [ 8,             percent                  ] };
+    key <BKSP> { [ Delete,        Delete                   ] };
+
+    // Top row
+    // --------------------------------------------------------
+    key <TAB>  { [ Tab,           ISO_Left_Tab             ] };
+    key <AD01> { [ q,             Q                        ] };
+    key <AD02> { [ y,             Y                        ] };
+    key <AD03> { [ o,             O                        ] };
+    key <AD04> { [ u,             U                        ] };
+    key <AD05> { [ apostrophe,    quotedbl                 ] };
+    key <AD06> { [ bracketright,  backslash                ] };
+    key <AD07> { [ b,             B                        ] };
+    key <AD08> { [ d,             D                        ] };
+    key <AD09> { [ l,             L                        ] };
+    key <AD10> { [ c,             C                        ] };
+    key <AD11> { [ j,             J                        ] };
+    key <AD12> { [ z,             Z                        ] };
+
+    // Middle row
+    // --------------------------------------------------------
+    key <CAPS> { [ Escape,        Multi_key                ] };
+    key <AC01> { [ h,             H                        ] };
+    key <AC02> { [ i,             I                        ] };
+    key <AC03> { [ e,             E                        ] };
+    key <AC04> { [ a,             A                        ] };
+    key <AC05> { [ comma,         colon                    ] };
+    key <AC06> { [ bracketleft,   asciicircum              ] };
+    key <AC07> { [ g,             G                        ] };
+    key <AC08> { [ t,             T                        ] };
+    key <AC09> { [ n,             N                        ] };
+    key <AC10> { [ s,             S                        ] };
+    key <AC11> { [ r,             R                        ] };
+    key <BKSL> { [ v,             V                        ] };
+
+    // Bottom row
+    // --------------------------------------------------------
+    key <LFSH> { [ BackSpace,     BackSpace                ] };
+    key <LSGT> { [ x,             X                        ] };
+    key <AB01> { [ minus,         underscore               ] };
+    key <AB02> { [ period,        equal                    ] };
+    key <AB03> { [ k,             K                        ] };
+    key <AB04> { [ Return,        Return                   ] };
+    key <AB05> { [ slash,         numbersign               ] };
+    key <AB06> { [ less,          greater                  ] };
+    key <AB07> { [ p,             P                        ] };
+    key <AB08> { [ w,             W                        ] };
+    key <AB09> { [ m,             M                        ] };
+    key <AB10> { [ f,             F                        ] };
+    key <RTSH> { [ semicolon,     question                 ] };
+
+    // Space key
+    // --------------------------------------------------------
+    key <SPCE> { [ space,         space                    ] };
+
+    // Remapping of modifiers; also sets sticky key behaviour
+
+    key <LCTL> { type[Group1] = "TWO_LEVEL",
+                 symbols[Group1] = [ Hyper_L, Hyper_L ],
+                 actions[Group1] = [ LatchMods(modifiers=Mod3),
+                                     LatchMods(modifiers=Mod3) ]
+    };
+    key <LWIN> { type[Group1] = "TWO_LEVEL",
+                 symbols[Group1] = [ Super_L, Super_L ],
+                 actions[Group1] = [ LatchMods(modifiers=Mod4),
+                                     LatchMods(modifiers=Mod4) ]
+    };
+
+    key <LALT> { type[Group1] = "TWO_LEVEL",
+                 symbols[Group1] = [ Control_R, Control_R ],
+                 actions[Group1] = [ LatchMods(modifiers=Control),
+                                     LatchMods(modifiers=Control) ]
+    };
+
+    key <RALT> { type[Group1] = "TWO_LEVEL",
+                 symbols[Group1] = [ Shift_L, Shift_L ],
+                 actions[Group1] = [ LatchMods(modifiers=Shift),
+                                     LockMods(modifiers=Shift) ]
+    };
+
+    key <PRSC> { type[Group1] = "TWO_LEVEL",
+                 symbols[Group1] = [ Alt_L, Meta_L ],
+                 actions[Group1] = [ LatchMods(modifiers=Mod1),
+                                     LatchMods(modifiers=Mod1) ]
+    };
+
+    // Keep Print Screen Around
+    key <RCTL> { type[Group1] = "PC_ALT_LEVEL2",
+                 symbols[Group1] = [ Print, Sys_Req ]
+    };
+
+    modifier_map Shift { <RALT> };
+    modifier_map Control { <LALT> };
+    modifier_map Mod1 { <PRSC> };
+    modifier_map Mod3 { <LCTL> };
+    modifier_map Mod4 { <LWIN> };
+};
+
 // Copied from macintosh_vndr/gb
 partial alphanumeric_keys
 xkb_symbols "mac" {

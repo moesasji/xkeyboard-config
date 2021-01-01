@@ -5645,6 +5645,12 @@
         </variant>
         <variant>
           <configItem>
+            <name>balance13</name>
+            <description>English (UK, Balance13)</description>
+          </configItem>
+        </variant>
+        <variant>
+          <configItem>
             <name>mac</name>
             <description>English (UK, Macintosh)</description>
           </configItem>
